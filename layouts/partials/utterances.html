@@ -1,0 +1,22 @@
+<div id="utterances_entry"></div>
+<script>
+	this.systemThemeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+  var systemTheme = this.systemThemeMediaQuery.matches ? 'dark' : 'light';
+	var utterancesTheme = systemTheme === 'dark' ? '{{ .Site.Params.utterancesDarkTheme }}' : '{{ .Site.Params.utterancesLightTheme }}';
+	var utterancesScript = document.createElement('script');
+	utterancesScript.src = 'https://utteranc.es/client.js';
+	utterancesScript.setAttribute('repo', '{{ .Site.Params.utterancesRepo }}');
+	utterancesScript.setAttribute('issue-term', '{{ .Site.Params.utterancesIssueTerm }}');
+	utterancesScript.setAttribute('theme', utterancesTheme);
+	utterancesScript.setAttribute('crossorigin', 'anonymous');
+	utterancesScript.setAttribute('async', '');
+	document.getElementById('utterances_entry').appendChild(utterancesScript);
+</script>
+<!-- <script src="https://utteranc.es/client.js"
+        repo="{{ .Site.Params.utterancesRepo }}"
+        issue-term="{{ .Site.Params.utterancesIssueTerm }}"
+        theme="utterancesTheme"
+        crossorigin="anonymous"
+        async>
+</script> -->
+<noscript>Please enable JavaScript to view the comments</noscript>

@@ -49,6 +49,22 @@
 		{{- if eq ($.Scratch.Get "isDisqus") true -}}
 		{{- partial "disqus.html" . -}}
 		{{- end -}}
+
+		{{- $.Scratch.Set "isUtterances" true -}}
+
+		<!-- Disable if content type is excluded in config -->
+		{{- if and (isset .Params "type") (in .Site.Params.disableCommentsTypes .Params.type) -}}
+		{{- $.Scratch.Set "isUtterances" false -}}
+		{{- end -}}
+
+		<!-- Check if utterances repo is given -->
+		{{ if not .Site.Params.utterancesRepo }}
+		{{- $.Scratch.Set "isUtterances" false -}}
+		{{ end }}
+
+		{{- if eq ($.Scratch.Get "isUtterances") true -}}
+		{{- partial "utterances.html" . -}}
+		{{- end -}}
 	</div>
 	{{ partial "footer.html" . }}
 </body>
