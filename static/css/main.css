@@ -390,6 +390,16 @@ ul {
     margin-block-end: 0;
 }
 
+.avatar {
+    display: inline-block;
+}
+
+.avatar img {
+    border-radius: 100%;
+    height: 48px;
+    width: 48px;
+}
+
 table th {
     background-color: #f4f4f4;
 }
